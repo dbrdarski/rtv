@@ -1,0 +1,119 @@
+.gradient(@f, @b){
+	background: @f; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(@f, @b); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(@f, @b); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(@f, @b); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(@f, @b); /* Standard syntax */
+}
+
+body{ font-family: 'Titillium Web', sans-serif;}
+body{
+	background: black;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.video-wrapper{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	// position: relative;
+	width: 100em;
+	&.playing{
+		> .overlay-img, &:after{
+			opacity: 0 !important;
+		}
+	}
+	&.widescreen{
+		height: 56.25em;
+		&[scale="width"]{
+			font-size: 1vw;
+		}
+		&[scale="height"]{
+			font-size: 1.77777777777vh;
+		}
+	}
+
+	> .overlay-img{
+		background-size: cover;
+		transition: all 300ms;
+		opacity: 1;
+	}
+	> .overlay-img, &:after{
+		display: block;
+		content: "";
+	}
+	> .overlay-img, &:after, > iframe{
+		position: absolute;
+		top: 0; bottom: 0;
+		left: 0; right: 0;
+		height: 100%; width: 100%;
+	}
+}
+
+#header{
+	position: fixed;
+	height: 80px;
+	width: 100%;
+	z-index: 1;
+	padding: 20px;
+	&.top{
+		top: 0;
+		.gradient(fade(black, 35), transparent);
+	}
+	&.bottom{
+		bottom: 0; top: auto;
+		.gradient(transparent, fade(black, 35));
+		.navigation{ position: absolute; bottom: 20px; }
+	}
+	&, a{
+		color: white;
+	}
+	a{
+		opacity: .5;
+		transition: opacity 150ms;
+		&:hover{
+			opacity: 1;
+		}
+	}
+}
+#video-overlay{
+	transition: filter 250ms ease-out;
+}
+
+.navigation{
+	font-size: 18px;
+	li{	
+		height: 1em;
+		display: inline-block;				
+	}
+	li+li{
+		margin-left: 20px;
+	}	
+	a{
+		text-decoration: none;
+	}
+}
+
+.text-overlay{
+	position: relative;
+	padding: 20px;
+	color: white;
+	font-size: 32px;
+	z-index: 100;
+}
+
+.logo{
+	display: block;
+    height: 27px;
+    width: 155px;
+    margin: -5px 0;	
+    > a{
+		position: absolute;
+    }
+}
+
+@import "components/controls";

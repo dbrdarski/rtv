@@ -1,0 +1,371 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0b1 | 201101 
+   NOTE: WORK IN PROGRESS
+   USE WITH CAUTION AND TEST WITH ABANDON */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+/* remember to define visible focus styles! 
+:focus {
+	outline: ?????;
+} */
+/* remember to highlight inserts somehow! */
+ins {
+  text-decoration: none;
+}
+del {
+  text-decoration: line-through;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+body {
+  font-family: 'Titillium Web', sans-serif;
+}
+body {
+  background: black;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+.video-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 100em;
+}
+.video-wrapper.playing > .overlay-img,
+.video-wrapper.playing:after {
+  opacity: 0 !important;
+}
+.video-wrapper.widescreen {
+  height: 56.25em;
+}
+.video-wrapper.widescreen[scale="width"] {
+  font-size: 1vw;
+}
+.video-wrapper.widescreen[scale="height"] {
+  font-size: 1.77777777777vh;
+}
+.video-wrapper > .overlay-img {
+  background-size: cover;
+  transition: all 300ms;
+  opacity: 1;
+}
+.video-wrapper > .overlay-img,
+.video-wrapper:after {
+  display: block;
+  content: "";
+}
+.video-wrapper > .overlay-img,
+.video-wrapper:after,
+.video-wrapper > iframe {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+}
+#header {
+  position: fixed;
+  height: 80px;
+  width: 100%;
+  z-index: 1;
+  padding: 20px;
+}
+#header.top {
+  top: 0;
+  background: rgba(0, 0, 0, 0.35);
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(rgba(0, 0, 0, 0.35), transparent);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(rgba(0, 0, 0, 0.35), transparent);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgba(0, 0, 0, 0.35), transparent);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(rgba(0, 0, 0, 0.35), transparent);
+  /* Standard syntax */
+}
+#header.bottom {
+  bottom: 0;
+  top: auto;
+  background: transparent;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.35));
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.35));
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(transparent, rgba(0, 0, 0, 0.35));
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.35));
+  /* Standard syntax */
+}
+#header.bottom .navigation {
+  position: absolute;
+  bottom: 20px;
+}
+#header,
+#header a {
+  color: white;
+}
+#header a {
+  opacity: .5;
+  transition: opacity 150ms;
+}
+#header a:hover {
+  opacity: 1;
+}
+#video-overlay {
+  transition: filter 250ms ease-out;
+}
+.navigation {
+  font-size: 18px;
+}
+.navigation li {
+  height: 1em;
+  display: inline-block;
+}
+.navigation li + li {
+  margin-left: 20px;
+}
+.navigation a {
+  text-decoration: none;
+}
+.text-overlay {
+  position: relative;
+  padding: 20px;
+  color: white;
+  font-size: 32px;
+  z-index: 100;
+}
+.logo {
+  display: block;
+  height: 27px;
+  width: 155px;
+  margin: -5px 0;
+}
+.logo > a {
+  position: absolute;
+}
+.controls {
+  position: fixed;
+  bottom: 0;
+  height: 10px;
+  width: auto;
+  left: 0;
+  right: 0;
+  padding: 0 20px 36px;
+}
+.controls .control-panel {
+  padding-left: 30px;
+}
+.controls .control-play {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  width: 30px;
+  height: 30px;
+  background: url(../img/play-button.svg) center no-repeat;
+  cursor: pointer;
+  opacity: .75;
+}
+.controls .control-play:hover {
+  opacity: 1;
+}
+.controls .control-play[state="paused"] {
+  background: url(../img/play-button.svg) center no-repeat;
+}
+.controls .control-play[state="playing"] {
+  background: url(../img/pause-button.svg) center no-repeat;
+}
+.controls .time {
+  position: absolute;
+  color: white;
+  left: 60px;
+  bottom: 18px;
+  text-align: center;
+}
+.controls .time-controls {
+  margin: 0 72px;
+}
+.controls .progress-slider {
+  padding: 0 3px;
+}
+.controls .progress-track {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  padding: 6px 0;
+  height: 20px;
+  width: 100%;
+}
+.controls .progress-track:before {
+  content: "";
+  display: block;
+  width: auto;
+  background: rgba(255, 255, 255, 0.4);
+}
+.controls .progress-track:hover:before {
+  background: rgba(255, 255, 255, 0.5);
+}
+.controls .progress-track:before,
+.controls .progress-track .progress {
+  position: absolute;
+  height: 4px;
+  margin: 3px 0;
+  border-radius: 4px;
+  width: 100%;
+}
+.controls .progress-track .progress {
+  display: block;
+  width: 0;
+  background: #09f;
+}
+.controls .progress-track .slider-handle {
+  position: absolute;
+  width: 20px;
+  margin: 3px 0;
+  height: 4px;
+  opacity: 1;
+}
+.controls .progress-track .slider-handle:before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  margin: -10px;
+  height: 20px;
+  width: 20px;
+  left: 50%;
+  top: 50%;
+  border-radius: 20px;
+  background: white;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}

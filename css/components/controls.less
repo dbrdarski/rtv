@@ -1,0 +1,98 @@
+.controls{
+    position: fixed;
+    bottom: 0;
+    height: 10px;
+    width: auto;
+    left: 0;
+    right: 0;
+    padding: 0 20px 36px;
+
+    .control-panel{
+        padding-left: 30px;
+    }
+   
+    .control-play{
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+        width: 30px;
+        height: 30px;
+        background: url(../img/play-button.svg) center no-repeat;
+        cursor: pointer;
+        opacity: .75;
+        &:hover{
+            opacity: 1;
+        }
+        &[state="paused"]{
+            background: url(../img/play-button.svg) center no-repeat;            
+        }
+        &[state="playing"]{
+            background: url(../img/pause-button.svg) center no-repeat;            
+        }
+    }
+    .time{
+        position: absolute;
+        color: white;
+        left: 60px;
+        bottom: 18px;
+        text-align: center;
+    }
+    .time-controls{
+        margin: 0 72px;
+    }
+    .progress-slider{
+        padding: 0 3px;
+    }
+    .progress-track{
+        display: inline-block;
+        position: relative;
+        cursor: pointer;
+        padding: 6px 0;
+        height: 20px;
+        width: 100%;
+        
+        &:before{
+            content: "";
+            display: block;
+            width: auto;
+            background: fade(white, 40);
+            // transition: background 200ms;
+        }
+        &:hover:before{
+            background: fade(white, 50);
+            // transition: none;
+        }
+        &:before, .progress{
+            position: absolute;
+            height: 4px;
+            margin: 3px 0;
+            border-radius: 4px;            
+            width: 100%
+        }
+        .progress{
+            display: block;
+            width: 0;
+            background: #09f;
+        }
+        .slider-handle{
+            position: absolute;
+            width: 20px;
+            margin: 3px 0;
+            height: 4px;
+            opacity: 1;
+            &:before{
+                content: "";
+                display: inline-block;
+                position: absolute;
+                margin: -10px;
+                height: 20px;
+                width: 20px;
+                left: 50%;
+                top: 50%;
+                border-radius: 20px;
+                background: white;
+                box-shadow: 1px 1px 4px fade(black, 10);
+            }
+        }
+    }
+}

@@ -8,18 +8,44 @@
     <title>RTV</title>
 
     <!-- Bootstrap -->
-    <link href="all.css" rel="stylesheet">
+    <link href="css/all.css" rel="stylesheet">
+    <style>@import 'https://fonts.googleapis.com/css?family=Titillium+Web';</style>
     <script id="require-js" data-path="js/vendor" data-main="js/main" src="js/require.min.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   </head>
   <body>
-    <div class="video-wrapper widescreen">
-      <iframe src="https://www.youtube.com/embed/bfhv8uf0IPY?controls=0&showinfo=0&autoplay=1&rel=0" frameborder="0" allowfullscreen></iframe>
-      <div class="overlay-img" style="background-image: url(http://img.youtube.com/vi/bfhv8uf0IPY/maxresdefault.jpg);"></div>
+    <header id="header" class="top">
+      <nav class="navigation">
+        <ul class="menu">
+          <li class="menu-item"><div class="logo"><a href="#"><img src="logo.png" alt=""></a></div></li>
+          <li class="menu-item"><a href="#">Now</a></li>
+          <li class="menu-item"><a href="#">Featured</a></li>
+          <li class="menu-item"><a href="#">Live</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div id="video-overlay">
+    <!-- videos will appear here -->
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->    
     <!-- Include all compiled plugins (below), or include individual files as needed -->    
+    <div id="text-overlay"><p>This is a text.</p></div>
+    <div class="controls">
+      <div class="control-panel">
+        <div class="control-play"></div>  
+        <div class="time">00:00</div>
+        <div class="time-controls">
+          <div class="progress-slider">
+            <div class="progress-track">
+              <span class="progress"></span>
+              <span class="slider-handle"></span>
+            </div>
+          </div>
+        </div>
+        <div class="duration"></div>
+      </div>
+    </div>
   </body>
 </html>
