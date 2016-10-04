@@ -1,0 +1,702 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"repl",
+				"replace"
+			],
+			[
+				"re",
+				"replace"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"con",
+				"control"
+			],
+			[
+				"video-",
+				"video-overlay"
+			],
+			[
+				"if",
+				"iframeId"
+			],
+			[
+				"pla",
+				"playlist"
+			],
+			[
+				"get",
+				"getDuration"
+			],
+			[
+				"time",
+				"timeout\tsetTimeout function"
+			],
+			[
+				"ge",
+				"getCurrentTime"
+			],
+			[
+				"margin-",
+				"margin-top"
+			],
+			[
+				"pa",
+				"pause"
+			],
+			[
+				"trans",
+				"transition"
+			],
+			[
+				"inli",
+				"inline-block"
+			],
+			[
+				"abs",
+				"absolute"
+			],
+			[
+				"grad",
+				"gradient"
+			],
+			[
+				"create",
+				"createTable"
+			],
+			[
+				"is_",
+				"is_callable"
+			],
+			[
+				"is",
+				"is_array"
+			],
+			[
+				"User",
+				"UserController"
+			],
+			[
+				"array_s",
+				"array_shift"
+			],
+			[
+				"va",
+				"validators"
+			],
+			[
+				"func",
+				"function"
+			],
+			[
+				"R",
+				"Request"
+			],
+			[
+				"jso",
+				"json_encode"
+			],
+			[
+				"header",
+				"headerTypes"
+			],
+			[
+				"res",
+				"response"
+			],
+			[
+				"tr",
+				"trim"
+			],
+			[
+				"for",
+				"foreach\tforeach …"
+			],
+			[
+				"param",
+				"params"
+			],
+			[
+				"para",
+				"params"
+			],
+			[
+				"req",
+				"request"
+			],
+			[
+				"ex",
+				"explode"
+			],
+			[
+				"c",
+				"console"
+			],
+			[
+				"cond",
+				"conditionCheck"
+			],
+			[
+				"arg",
+				"arguments"
+			],
+			[
+				"ti",
+				"title"
+			],
+			[
+				"field",
+				"fieldHash"
+			],
+			[
+				"retr",
+				"return"
+			],
+			[
+				"has",
+				"hash"
+			],
+			[
+				"map",
+				"mapRow"
+			],
+			[
+				"do",
+				"doMap"
+			],
+			[
+				"the",
+				"theGameMap"
+			],
+			[
+				"obj",
+				"object"
+			],
+			[
+				"get_arg",
+				"func_get_args"
+			],
+			[
+				"new",
+				"newObj"
+			],
+			[
+				"install",
+				"installScript"
+			],
+			[
+				"inst",
+				"installScript"
+			],
+			[
+				"in",
+				"installScript"
+			],
+			[
+				"pad",
+				"padding-bottom"
+			],
+			[
+				"session",
+				"session_id"
+			],
+			[
+				"ret",
+				"returnList"
+			],
+			[
+				"x",
+				"XY"
+			],
+			[
+				"gene",
+				"generate"
+			],
+			[
+				"generate",
+				"GenerateMap"
+			],
+			[
+				"bo",
+				"bottom"
+			],
+			[
+				"ra",
+				"randomFortune"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"no",
+				"nowrap"
+			],
+			[
+				"inl",
+				"inline-block"
+			],
+			[
+				"tra",
+				"translateX"
+			],
+			[
+				"text",
+				"text-transform"
+			],
+			[
+				"widt",
+				"width"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 58.0,
+		"last_filter": "PACKA",
+		"selected_items":
+		[
+			[
+				"PACKA",
+				"Preferences: Browse Packages"
+			],
+			[
+				"PACKAGE",
+				"Preferences: Browse Packages"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Enable Package"
+			],
+			[
+				"packa",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 432.0
+	},
+	"console":
+	{
+		"height": 174.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'df21e130d211cfc94d9b0905775a7c0f' + '1e3d39e33b79698005270310898eea76'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"glue",
+			"glue path",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/Projects/rtv"
+	],
+	"file_history":
+	[
+		"/D/Projects/rtv/index.html",
+		"/D/Projects/rtv/css/main.less",
+		"/D/Projects/rtv/css/components/controls.less",
+		"/D/Projects/rtv/css/all.less",
+		"/D/Projects/rtv/js/main.js",
+		"/D/Projects/rtv/js/player.js",
+		"/D/Projects/rtv/js/youtube.js",
+		"/D/Projects/rtv/templates/video.html",
+		"/D/Projects/rtv/js/utils.js",
+		"/D/Projects/rtv/js/app.js",
+		"/D/Projects/containers/js-containers/containers.js",
+		"/C/xampp/apache/conf/extra/httpd-vhosts.conf",
+		"/C/xampp/apache/conf/original/extra/httpd-vhosts.conf",
+		"/D/Projects/rtv/js/vendor/stache.min.js",
+		"/D/Projects/rtv/js/vendor/text.js",
+		"/D/Projects/rtv/css/reset.less",
+		"/D/Projects/rtv/main.less",
+		"/D/Projects/rtv/all.less",
+		"/D/Projects/php-cms/core/Wrappers/Something.php",
+		"/C/Users/dane/Desktop/slim3resources/slim3auth/app/Auth/Auth.php",
+		"/D/Projects/php-cms/core/Rendering/Engine.php",
+		"/D/Projects/php-cms/core/Router/Response.php",
+		"/D/Projects/php-cms/core/Router/Request.php",
+		"/C/xampp/htdocs/cms/2.php",
+		"/D/Projects/php-cms/core/Module/Module.php",
+		"/D/Projects/pathfinder/functions.js",
+		"/D/Projects/php-cms/bootstrap/app.php",
+		"/D/Projects/php-cms/core/Controllers/UserController.php",
+		"/D/Projects/php-cms/core/Router.php",
+		"/D/Projects/php-cms/core/Models/Node.php",
+		"/D/Projects/php-cms/core/Migration/Node.php",
+		"/D/Projects/php-cms/core/Models/Blog.php",
+		"/D/Projects/php-cms/vendor/illuminate/database/Schema/Blueprint.php",
+		"/D/Games/StarCraft/info.nfo",
+		"/C/xampp/htdocs/wp/wp-includes/date.php",
+		"/C/xampp/htdocs/wp/wp-includes/class-wp.php",
+		"/C/xampp/htdocs/wp/wp-includes/taxonomy.php",
+		"/C/xampp/htdocs/wp/wp-includes/http.php",
+		"/C/xampp/htdocs/wp/wp-includes/option.php",
+		"/D/Projects/php-cms/core/Models/User.php",
+		"/D/Projects/php-cms/resources/views/mustache/signup.html",
+		"/D/Projects/php-cms/vendor/illuminate/database/Capsule/Manager.php",
+		"/D/Projects/php-cms/public/index.php",
+		"/D/Projects/php-cms/core/Validation/Validator.php",
+		"/D/Projects/php-cms/config/config.php",
+		"/C/Users/dane/Desktop/slim3resources/slim3auth/vendor/slim/slim/Slim/Route.php",
+		"/C/Users/dane/Desktop/slim3resources/slim3auth/vendor/slim/slim/Slim/Routable.php",
+		"/C/Users/dane/Desktop/slim3resources/slim3auth/vendor/slim/slim/Slim/Router.php",
+		"/D/Projects/php-cms/core/Controllers/User.php",
+		"/D/Projects/php-cms/core/Validation/Something.php",
+		"/D/Projects/php-cms/core/Wrappers/Check.php",
+		"/D/Projects/php-cms/core/Wrappers/Faliure.php",
+		"/D/Projects/php-cms/resources/views/mustache/user.html",
+		"/D/Projects/php-cms/.gitattributes",
+		"/D/Projects/php-cms/.gitignore",
+		"/D/Projects/php-cms/vendor/mustache/mustache/.gitignore",
+		"/D/Projects/php-cms/core/Database/Connection.php",
+		"/D/Projects/php-cms/core/Wrappers/Check - Copy.php",
+		"/D/Projects/php-cms/core/Wrappers/Nothing.php",
+		"/D/Projects/php-cms/core/Wrappers/GenricWrapper.php",
+		"/D/Projects/php-cms/core/Wrappers/Genric.php",
+		"/C/Users/dane/Desktop/slim3resources/slim3auth/app/Models/User.php",
+		"/D/Projects/php-cms/core/Renderer/Renderer.php",
+		"/D/Projects/php-cms/core/Templating/Renderer.php",
+		"/D/Projects/php-cms/core/Database/capsle.php",
+		"/D/Projects/php-cms/resources/views/mustache/template.html",
+		"/D/Projects/php-cms/resources/views/mustache/template.mustache",
+		"/C/Users/dane/Desktop/slim3resources/slim3auth/bootstrap/app.php",
+		"/D/Projects/php-cms/core/Router/Router.php",
+		"/D/Projects/php-cms/core/Core.php",
+		"/C/Users/dane/Desktop/slim3resources/slim3auth/vendor/slim/slim/Slim/App.php",
+		"/C/Users/dane/Desktop/slim3resources/slim3auth/vendor/slim/slim/Slim/Exception/SlimException.php",
+		"/D/Projects/php-cms/composer.lock",
+		"/C/Users/dane/Desktop/slim3resources/slim3auth/composer.json",
+		"/D/Projects/php-cms/composer.json",
+		"/D/Projects/php-cms/vendor/autoload.php",
+		"/D/Projects/php-cms/vendor/composer/autoload_real.php",
+		"/C/Users/dane/Desktop/slim3resources/slim3auth/app/routes.php",
+		"/C/Users/dane/Desktop/slim3resources/slim3auth/public/index.php",
+		"/D/Projects/php-cms/core/Wrappers/Wrappers.php",
+		"/D/Projects/php-cms/core/app.php",
+		"/D/Projects/php-cms/core/Module/index.php",
+		"/C/xampp/htdocs/cms/index.php",
+		"/C/Users/dane/Desktop/slim3resources/slim3auth/.htaccess",
+		"/D/Projects/php-cms/public/.htaccess",
+		"/D/Projects/stupidClass.js",
+		"/D/Projects/laravel-cms/config/database.php",
+		"/D/Projects/laravel-cms/.env",
+		"/D/Projects/laravel-cms/app/Http/routes.php",
+		"/C/Users/dane/Desktop/slim3resources/slim3auth/vendor/slim/slim/Slim/Interfaces/RouteInterface.php",
+		"/C/Users/dane/Desktop/slim3resources/slim3auth/vendor/slim/slim/Slim/RouteGroup.php",
+		"/C/Users/dane/Desktop/slim3resources/slim3auth/vendor/slim/slim/Slim/Http/Body.php",
+		"/C/Users/dane/Desktop/SaSS/sass-f.scss",
+		"/D/Projects/php-cms/index.php",
+		"/D/Projects/php-cms/vendor/laravel/laravel/public/index.php",
+		"/D/Projects/php-cms/test/core/routes/api.php",
+		"/D/Projects/php-cms/test/core/routes/web.php",
+		"/D/Projects/laravel-cms/routes/api.php",
+		"/D/Projects/php-cms/test/core/routes/console.php",
+		"/D/Projects/php-cms/test/core/server.php",
+		"/C/Users/dane/Desktop/laravel-resources/laravel-tasklist-beginner/app/Http/routes.php",
+		"/C/Users/dane/AppData/Local/Temp/7zO418BDEC8/Task.php",
+		"/C/Users/dane/AppData/Local/Temp/7zO418A8479/server.php",
+		"/C/Users/dane/Desktop/laravel-resources/laravel-tasklist-beginner/app/Http/Controllers/Controller.php",
+		"/C/Users/dane/Desktop/laravel-resources/laravel-tasklist-beginner/app/Exceptions/Handler.php",
+		"/C/Users/dane/Desktop/slim3resources/slim3auth/vendor/autoload.php",
+		"/C/Users/dane/Desktop/slim3resources/slim3auth/vendor/composer/autoload_files.php",
+		"/C/Users/dane/Desktop/slim3resources/slim3auth/vendor/composer/autoload_classmap.php",
+		"/C/xampp/apache/conf/extra/httpd-xampp.conf",
+		"/C/xampp/htdocs/cms/index - Copy.php",
+		"/C/Users/dane/Desktop/functional.js",
+		"/D/Projects/pathfinder/index.html",
+		"/C/Users/dane/Downloads/jquery-3.1.0.js",
+		"/C/Users/dane/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/dane/Downloads/jquery-3.1.0.min.js",
+		"/C/xampp/htdocs/wp/wp-content/themes/diabetesforum/style.css",
+		"/C/xampp/htdocs/wp/wp-content/themes/diabetesforum/index.php",
+		"/C/xampp/htdocs/wp/wp-content/themes/diabetesforum/template-parts/content-single.php",
+		"/C/xampp/htdocs/wp/wp-content/themes/diabetesforum/template-parts/content.php",
+		"/C/Users/dane/Desktop/asd.html",
+		"/C/xampp/htdocs/phpMyAdmin/config.inc.php",
+		"/C/xampp/htdocs/main.php",
+		"/C/xampp/htdocs/ajax/index.php",
+		"/C/xampp/htdocs/slim3auth/app/Auth/Auth.php",
+		"/C/Users/dane/Desktop/slim3resources/slim3auth/vendor/illuminate/database/Eloquent/Model.php",
+		"/C/xampp/htdocs/brands/index.php",
+		"/C/xampp/htdocs/slim3auth/vendor/slim/slim/Slim/App.php",
+		"/C/xampp/htdocs/slim3auth/.htaccess"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 102.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"memo",
+			"new",
+			"old",
+			"(t",
+			"(t)",
+			"t",
+			"plice",
+			"args =",
+			"array.",
+			".proto",
+			"1",
+			"h",
+			"minutes",
+			"seconds",
+			"0 3px",
+			"overl",
+			"$videos",
+			"php-cms",
+			"\n",
+			"php-cms",
+			"php.cms",
+			"stache",
+			"video",
+			"youtube.load",
+			"arguments",
+			"player",
+			"displa",
+			": none",
+			"target",
+			"timeout",
+			"3px",
+			"left",
+			"(this)",
+			"var ",
+			"YT",
+			"container",
+			"YT.",
+			"youtube-player",
+			"load",
+			"onPlayerStateChange",
+			"$(this)",
+			"3px 0",
+			"6px",
+			"div",
+			"h1Lfd1aB9YI",
+			"n-_2u-mdwrA",
+			"mdwrA",
+			"fuhHU_BZXSk",
+			"none",
+			"bfhv8uf0IPY",
+			"red",
+			"schema",
+			"resolve",
+			"handle",
+			"h",
+			"Core",
+			"r:",
+			"Request",
+			"user",
+			"User",
+			"$validators[$method]",
+			"->add(",
+			"password",
+			"email",
+			"\"name",
+			"$partial_match",
+			"$res",
+			"{\n",
+			"full",
+			"_path",
+			"$user",
+			"$user::find(1)",
+			"$err",
+			"message",
+			"Faliure",
+			"$err",
+			"  '",
+			"mOptions",
+			"render",
+			"array('extension' => '.html')",
+			"Request",
+			"}\n    function",
+			"){",
+			"    }",
+			"){",
+			"of",
+			"){",
+			"'/'",
+			"send",
+			"json",
+			"$headerTypes",
+			"send",
+			"send()",
+			"$route",
+			"$prs",
+			"$params ",
+			"$params",
+			"$ps",
+			"$request",
+			"$params_srt",
+			"$params",
+			"get",
+			"get(",
+			"homestead",
+			"php-cms",
+			" php-cms",
+			"localhost",
+			"##",
+			"prop",
+			"something",
+			"default",
+			"resolve",
+			"onFailure(",
+			"onSuccess(",
+			"onSuccess",
+			"assert(",
+			"check",
+			"->chec",
+			"n check(",
+			"check(",
+			"_check",
+			"is(",
+			"not(",
+			"not",
+			"log()",
+			"is",
+			"check",
+			"not"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"   ",
+			"  "
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 30.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "rtv.sublime-project",
+	"replace":
+	{
+		"height": 56.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

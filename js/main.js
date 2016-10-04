@@ -8,9 +8,9 @@ requirejs.config({
         "text" : "text",
         "stache" : "stache",
         "youtube" : "../youtube",
-        "player" : "../player"
+        "player" : "../player",
+        "utils": "../utils"
         // "webfont" : "https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js",
-        // "util": "../util.min",
         // "scrollMonitor" : "scrollMonitor"
     },
     "shim": {

@@ -1,10 +1,10 @@
 define([
 	'player',
 	'mustache',
-	// 'util',
+	'utils',
     'jquery',
     'jquery.vimeo'
-], function (Player, M, $) {
+], function (Player, M, _, $) {
 	function getSize(domObject){
 		var $o = $(domObject);
 		return $o.width() / $o.height();
@@ -30,16 +30,47 @@ define([
 	// });
 
 	// $(window).on('resize.ratio', ratio).trigger('resize.ratio');
+
+	var hideControls = function function_name($controls) {
+		return function(){
+			$controls.removeClass('active');
+		};
+	};
+
+	var showControls = function function_name($controls, $timeout) {
+		var timer;
+		return function(){
+			clearTimeout(timer);
+			$controls.addClass('active');
+			timer = setTimeout(hideControls($controls), $timeout);
+		};
+	};
+
+	$('#video-overlay').on('mousemove', showControls($('.controls'), 1000));
+
 	var $progress = $('.controls .progress-slider');
-	$progress.on('mousedown mouseup', function(e){
-		var player = window.YT.API,
-			control = $(this),
-			width = e.pageX - control.position().left,
-			percentage = range((width - 5) / (control.width() - 7), 0, 1)
-		;
-		updateProgressBar(control)(percentage);
-		player.seekTo(player.getDuration() * percentage);
-	});
+	$progress.on('mousedown mousemove mouseup', (function(state){ 
+		return function(e){
+			e.preventDefault();
+			var player = window.YT.API,
+				control = $(this),
+				width = e.pageX - control.position().left,
+				percentage = range((width - 5) / (control.width() - 7), 0, 1)
+			;
+			if(e.type !=="mousemove" || state === "active"){
+				updateProgressBar(control)(percentage);
+				player.seekTo(player.getDuration() * percentage);
+			}
+			if(e.type === "mousedown"){
+				state = "active";
+				player.pauseVideo();
+			}else if(e.type === "mouseup"){
+				player.playVideo();
+				state = "inactive";
+			}
+		};
+	})()
+	);
 	
 	function pad(size){
 		return function(num){
@@ -48,30 +79,45 @@ define([
 	    	return s;
 		};
 	}
-
+	function roundTime(t){
+		return Math.floor(t);
+	}
 	function parseTime(t){
-		var s = Math.floor(t)%60;
+		var s = t%60;
 		var m = Math.floor(t/60)%60;
 		var h = Math.floor(m/60);
 		var time = [];
 		h > 1 && time.push(h);
-		time.push(m,s);		
+		time.push(m,s);
 		return time.map(pad(2)).join(":");
-		
 	}
+	// var hi = memo(fn, 0, 0);
+	// var fn = function(x,y){
+	// 	return x === y ? true : false;
+	// }
+
+	var updateTime = _.memo(function(x, y){
+		x !== y && $(".control-panel .time").html(parseTime(y));
+	}, null, 0);
+	
+	var updateDuration = function(duration){
+		$(".control-panel .duration").html(parseTime(roundTime(duration)));
+	}
+
 	var updateProgressBar = function(control){
 		var player = window.YT.API;
 		return function(percentage){
 			control.find(".progress").css({"width": percentage*100+'%'});
 			control.find(".slider-handle").css({"left": percentage * (control.width() - 20)});
-			$(".control-panel .time").html(parseTime(player.getCurrentTime()));
+			updateTime = updateTime(roundTime(player.getCurrentTime()));
 		}
 	};
 	
 	
 	function bindProgressBar(player){
+		updateDuration(player.getDuration());
 		return function(){
-			var percentage = player.getCurrentTime() / player.getDuration();			
+			var percentage = player.getCurrentTime() / player.getDuration();
 			updateProgressBar($progress)(percentage);
 		};
 	}	

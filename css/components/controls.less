@@ -6,6 +6,19 @@
     left: 0;
     right: 0;
     padding: 0 20px 36px;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 500ms, transform 0s 500ms;
+    &.active{
+        transition: opacity 500ms, transform 300ms;
+        transform: translateY(0%);
+        opacity: .5;
+    }
+    &:hover{
+        transform: translateY(0%);
+        opacity: 1;
+    }
+    .gradient(transparent, fade(black, 35));
 
     .control-panel{
         padding-left: 30px;
@@ -30,18 +43,29 @@
             background: url(../img/pause-button.svg) center no-repeat;            
         }
     }
-    .time{
+    .time, .duration{
         position: absolute;
         color: white;
-        left: 60px;
         bottom: 18px;
         text-align: center;
     }
+    .time{
+        left: 60px;
+    }
+    .duration{
+        right: 30px;
+    }
     .time-controls{
-        margin: 0 72px;
+        margin: 0 72px;        
     }
     .progress-slider{
         padding: 0 3px;
+        margin-top: -100px;
+        padding-top: 100px;
+        // &:active{
+        //     margin-top: -100px;
+        //     padding-top: 100px;
+        // }
     }
     .progress-track{
         display: inline-block;
