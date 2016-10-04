@@ -49,24 +49,24 @@ define([
 	$('#video-overlay').on('mousemove', showControls($('.controls'), 1000));
 
 	var $progress = $('.controls .progress-slider');
-	$progress.on('mousedown mousemove mouseup', (function(state){ 
+	$progress.on('mousedown mousemove mouseup', (function(){
+		var state, originalState;
 		return function(e){
 			e.preventDefault();
 			var player = window.YT.API,
 				control = $(this),
 				width = e.pageX - control.position().left,
-				percentage = range((width - 5) / (control.width() - 7), 0, 1)
-			;
+				percentage = range((width - 5) / (control.width() - 7), 0, 1);
 			if(e.type !=="mousemove" || state === "active"){
 				updateProgressBar(control)(percentage);
 				player.seekTo(player.getDuration() * percentage);
 			}
 			if(e.type === "mousedown"){
-				state = "active";
-				player.pauseVideo();
-			}else if(e.type === "mouseup"){
-				player.playVideo();
-				state = "inactive";
+				originalState = player.getPlayerState() === 1 ? player.pauseVideo() && 'playing' : 'paused';
+				state = 'active';
+			}else if(e.type === "mouseup"){				
+				state = 'inactive';
+				originalState === 'playing' ? player.playVideo() : null;
 			}
 		};
 	})()
@@ -79,9 +79,11 @@ define([
 	    	return s;
 		};
 	}
+
 	function roundTime(t){
 		return Math.floor(t);
 	}
+
 	function parseTime(t){
 		var s = t%60;
 		var m = Math.floor(t/60)%60;
@@ -91,10 +93,6 @@ define([
 		time.push(m,s);
 		return time.map(pad(2)).join(":");
 	}
-	// var hi = memo(fn, 0, 0);
-	// var fn = function(x,y){
-	// 	return x === y ? true : false;
-	// }
 
 	var updateTime = _.memo(function(x, y){
 		x !== y && $(".control-panel .time").html(parseTime(y));
@@ -110,7 +108,7 @@ define([
 			control.find(".progress").css({"width": percentage*100+'%'});
 			control.find(".slider-handle").css({"left": percentage * (control.width() - 20)});
 			updateTime = updateTime(roundTime(player.getCurrentTime()));
-		}
+		};
 	};
 	
 	
