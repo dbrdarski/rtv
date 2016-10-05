@@ -24,18 +24,28 @@
         padding-left: 30px;
     }
    
-    .control-play{
+    .control-play, .control-volume{
         position: absolute;
-        left: 10px;
         bottom: 10px;
         width: 30px;
         height: 30px;
-        background: url(../img/play-button.svg) center no-repeat;
         cursor: pointer;
         opacity: .75;
         &:hover{
             opacity: 1;
         }
+    }
+    .control-volume{
+        left: 55px;
+        background: url(../img/speaker@2x.png) center no-repeat;
+        background-size: 35px !important;
+        &.mute{
+            background: url(../img/speaker-off@2x.png) center no-repeat;
+        }
+    }
+    .control-play{
+        left: 10px;
+        background: url(../img/play-button.svg) center no-repeat;
         &[state="paused"]{
             background: url(../img/play-button.svg) center no-repeat;            
         }
@@ -50,13 +60,13 @@
         text-align: center;
     }
     .time{
-        left: 60px;
+        left: 105px;
     }
     .duration{
         right: 30px;
     }
     .time-controls{
-        margin: 0 72px;        
+        margin: 0 72px 0 122px;
     }
     .progress-slider{
         padding: 0 3px;

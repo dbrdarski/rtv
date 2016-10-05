@@ -309,18 +309,30 @@ body {
 .controls .control-panel {
   padding-left: 30px;
 }
-.controls .control-play {
+.controls .control-play,
+.controls .control-volume {
   position: absolute;
-  left: 10px;
   bottom: 10px;
   width: 30px;
   height: 30px;
-  background: url(../img/play-button.svg) center no-repeat;
   cursor: pointer;
   opacity: .75;
 }
-.controls .control-play:hover {
+.controls .control-play:hover,
+.controls .control-volume:hover {
   opacity: 1;
+}
+.controls .control-volume {
+  left: 55px;
+  background: url(../img/speaker@2x.png) center no-repeat;
+  background-size: 35px !important;
+}
+.controls .control-volume.mute {
+  background: url(../img/speaker-off@2x.png) center no-repeat;
+}
+.controls .control-play {
+  left: 10px;
+  background: url(../img/play-button.svg) center no-repeat;
 }
 .controls .control-play[state="paused"] {
   background: url(../img/play-button.svg) center no-repeat;
@@ -336,13 +348,13 @@ body {
   text-align: center;
 }
 .controls .time {
-  left: 60px;
+  left: 105px;
 }
 .controls .duration {
   right: 30px;
 }
 .controls .time-controls {
-  margin: 0 72px;
+  margin: 0 72px 0 122px;
 }
 .controls .progress-slider {
   padding: 0 3px;

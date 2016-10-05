@@ -47,7 +47,11 @@ define([
 	};
 
 	$('#video-overlay').on('mousemove', showControls($('.controls'), 1000));
-
+	$('.controls .control-volume').on('click', function(){
+		$(this).toggleClass('mute');
+		window.YT.API.getVolume() !== 0 ? window.YT.API.setVolume(0) : window.YT.API.setVolume(100);
+	});
+	
 	var $progress = $('.controls .progress-slider');
 	$progress.on('mousedown mousemove mouseup', (function(){
 		var state, originalState;
@@ -204,7 +208,8 @@ define([
 		$('#video-overlay').css({'filter':'grayscale() contrast(1.1) brightness(.65)'});
 	}).on('end', function(){	
 		$(YT.API.getIframe()).parent().removeClass('playing');
-	}).on('statechange', function(){	
+	}).on('statechange', function(){
+		updateTime(roundTime(window.YT.API.getCurrentTime()));
 		clearInterval(interval);
 	})
 });
