@@ -275,6 +275,40 @@ body {
 .logo > a {
   position: absolute;
 }
+.control-quality {
+  position: fixed;
+  right: 50px;
+  top: 10px;
+  width: 60px;
+  z-index: 100;
+  padding: 1.5em .5em .25em;
+  line-height: 1.25em;
+  color: white;
+  border: 1px solid white;
+  border-radius: 4px;
+  text-align: center;
+  font-size: .875em;
+  background: rgba(30, 30, 30, 0.4);
+  opacity: .75;
+  cursor: pointer;
+}
+.control-quality.active .level {
+  display: block;
+}
+.control-quality .level {
+  display: none;
+  position: relative;
+}
+.control-quality .level.active {
+  position: absolute;
+  display: block;
+  top: .25em;
+  left: 0;
+  width: 100%;
+}
+.control-quality:hover {
+  opacity: 1;
+}
 .controls {
   position: fixed;
   bottom: 0;

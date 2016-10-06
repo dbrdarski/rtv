@@ -157,6 +157,9 @@ define([
 						Player.trigger('buffer');
 			    		break;
 				}
+			},
+			onPlaybackQualityChange: function(){
+				Player.trigger('qualitychange');
 			}
 		});
 		Player.inject(YT, 'youtube');		
@@ -175,6 +178,19 @@ define([
 			// iframeId: 'YT'+'0_e4YX73Ww4',
 			// vendor: 'youtube'
 		// }
+		]
+	};
+	// use player.getAvailableQualityLevels()
+	var quality = {
+		levels: [
+			{name:'tiny', label:'144p'},
+			{name:'small', label:'240p'},
+			{name:'medium', label:'360p'},
+			{name:'large', label:'480p'},
+			{name:'hd720', label:'720p'},
+			{name:'hd1080', label:'1080p'},
+			// {name:'highres', label:'HD+'},
+			{name:'default', label:'auto'}
 		]
 	};
 
@@ -197,6 +213,25 @@ define([
 
 	});
 
+	require(['stache!../../templates/quality-control'], function(template){
+		var html = template(quality);
+		$control = $(".control-quality");
+		$control.html(html);
+		$levels = $control.find('.level');		
+		$levels.on('click', function(){
+			var $level = $(this),
+				level = $level.attr('name');
+				
+			if(window.YT.API.getPlaybackQuality() !== level){
+				setQuality(window.YT.API, level);
+			}
+		});
+		$control.on('click', function(){
+			$(this).toggleClass('active');
+		});
+
+	});
+
 	var interval;
 	Player.on('play', function(){
 		interval = setInterval(bindProgressBar(YT.API), 200);
@@ -206,10 +241,27 @@ define([
 	}).on('pause', function(){
 		$play.attr('state', 'paused');
 		$('#video-overlay').css({'filter':'grayscale() contrast(1.1) brightness(.65)'});
-	}).on('end', function(){	
+	}).on('end', function(){
 		$(YT.API.getIframe()).parent().removeClass('playing');
 	}).on('statechange', function(){
 		updateTime(roundTime(window.YT.API.getCurrentTime()));
 		clearInterval(interval);
+	}).on('qualitychange', function(){
+			$('.control-quality .level[name="'+YT.API.getPlaybackQuality()+'"]').addClass('active').siblings().removeClass('active');		
 	})
 });
+
+function setQuality(player, q){
+    var curSeek = player.getCurrentTime(); // current video time
+    var status = player.getPlayerState(); // video status
+    if(status!=-1 && status!=5){ // if not started, does not to be stoped
+        player.stopVideo();
+    }
+    player.setPlaybackQuality(q);
+    player.seekTo(curSeek);
+    if(status!=1){
+        player.pauseVideo(); // if was paused   
+    }else{
+        player.playVideo(); // if was playing
+    }
+}
