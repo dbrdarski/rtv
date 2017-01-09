@@ -1,0 +1,25 @@
+    <div class="video">
+      <div id="video-overlay" v-on:mousemove="showControls" v-bind:style="filtersForPause">
+        <div class="video-wrapper widescreen" v-bind:state="imageOverlay"><!-- v-bind:data-type="vendor" -->
+      <!-- videos will appear here --> 
+      </div>
+
+      <div id="text-overlay"><p>This is a text.</p></div>
+      <div class="control-quality"></div>
+      <div class="controls" v-bind:state="controlsState">
+        <div class="control-panel">
+          <div class="control-play" v-on:click="playButtonClick" v-bind:state="state"></div>
+          <div class="control-volume" v-on:click="volumeClick" v-bind:state="volume.state"></div>  
+          <div class="time">{{time}}</div>
+          <div class="time-controls">
+            <div class="progress-slider" v-on:mousedown="progressDown" v-on:mouseup="progressUp" v-on:mousechange="progressChange">
+              <div class="progress-track">
+                <span class="progress" v-bind:style="percentage"></span>
+                <span class="slider-handle" v-bind:style="sliderHandle"></span>
+              </div>
+            </div>
+          </div>
+          <div class="duration">{{duration}}</div>
+        </div>
+      </div>
+    </div>

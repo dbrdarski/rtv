@@ -1,4 +1,4 @@
-define(['jquery'], function($){
+define(['jquery'], function(){
     
     var events = {};
     YT =  function(container, video) {
@@ -7,7 +7,8 @@ define(['jquery'], function($){
                 loadPlayer(container, video);
             };
 
-            $.getScript('https://www.youtube.com/iframe_api');
+            // $.getScript('https://www.youtube.com/iframe_api');
+            require(['https://www.youtube.com/iframe_api']);
         } else {
             loadPlayer(container, video);
             $(document).trigger('youtubeAPI.loaded');
@@ -18,7 +19,7 @@ define(['jquery'], function($){
         events = e;
     }
 
-    loadPlayer = function(container, video) {
+    var loadPlayer = function(container, video) {
         YT.id = video;          // ??
         YT.iframe = container;  // ??
         YT.API = new window.YT.Player(container, {
@@ -26,7 +27,7 @@ define(['jquery'], function($){
             playerVars: {
                 autoplay: 1,
                 controls: 0,
-                modestbranding: 0,
+                modestbranding: 1,
                 rel: 0,
                 showinfo: 0
             },

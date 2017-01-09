@@ -43,7 +43,7 @@
     opacity: 0;
     transform: translateY(100%);
     transition: opacity 500ms, transform 0s 500ms;
-    &.active{
+    &[state="active"]{
         transition: opacity 500ms, transform 300ms;
         transform: translateY(0%);
         opacity: .5;
@@ -73,7 +73,7 @@
         left: 55px;
         background: url(../img/speaker@2x.png) center no-repeat;
         background-size: 35px !important;
-        &.mute{
+        &[state="mute"]{
             background: url(../img/speaker-off@2x.png) center no-repeat;
         }
     }

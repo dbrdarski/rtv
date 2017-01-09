@@ -143,6 +143,11 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
 body {
   font-family: 'Titillium Web', sans-serif;
 }
@@ -160,8 +165,8 @@ body {
   transform: translateX(-50%) translateY(-50%);
   width: 100em;
 }
-.video-wrapper.playing > .overlay-img,
-.video-wrapper.playing:after {
+.video-wrapper[state="active"] > .overlay-img,
+.video-wrapper[state="active"]:after {
   opacity: 0 !important;
 }
 .video-wrapper.widescreen {
@@ -275,6 +280,117 @@ body {
 .logo > a {
   position: absolute;
 }
+#sidebar {
+  position: fixed;
+  width: 440px;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  box-shadow: 1px 0 rgba(255, 255, 255, 0.05) inset;
+  transition: 0.25s 0.1s ease-out;
+}
+.article.video {
+  position: relative;
+  padding: 10px 15px;
+  transition: transform .2s;
+  cursor: pointer;
+}
+.article.video + .article.video {
+  box-shadow: 0 -16px 0 -15px rgba(255, 255, 255, 0.075);
+}
+.article.video:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.article.video:before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: -2px;
+  right: -2px;
+  background: #333333;
+  transform: scale(0);
+  transition: .06s;
+}
+.article.video:hover {
+  z-index: 10;
+  position: relative;
+  left: 1px;
+  transform: translateX(-4px);
+  transition: transform .4s;
+}
+.article.video:hover:before {
+  transform: none;
+}
+.article.video .article-thumb {
+  position: relative;
+  float: left;
+  margin-right: 20px;
+}
+.article.video .article-thumb,
+.article.video .article-thumb .thumb-img {
+  width: 128px;
+  height: 72px;
+  width: 160px;
+  height: 90px;
+}
+.active.article.video .article-thumb:after,
+.active.article.video .article-thumb:before {
+  position: absolute;
+  display: block;
+  content: "";
+  width: 64px;
+  height: 64px;
+  top: 50%;
+  left: 50%;
+}
+.active.article.video .article-thumb:before {
+  border-radius: 100px;
+  box-shadow: 0 0 0 3px #09f;
+  background: #09f;
+  transform: translate3d(-50%, -50%, 0);
+}
+.active.article.video .article-thumb:after {
+  border: 4px solid;
+  border-right: black;
+}
+.article.video .article-meta {
+  position: relative;
+  float: left;
+  width: 230px;
+  height: 90px;
+  line-height: 1.25;
+}
+.article.video .article-meta-inner {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.article.video .thumb-img {
+  position: relative;
+  background-position: center;
+  background-size: cover;
+}
+.active.article.video .thumb-img {
+  filter: grayscale(1);
+}
+.article.video .title {
+  margin-bottom: 4px;
+}
+.article.video .category {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #999;
+}
+.active.article.video .category {
+  color: #09f;
+}
 .control-quality {
   position: fixed;
   right: 50px;
@@ -331,7 +447,7 @@ body {
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.35));
   /* Standard syntax */
 }
-.controls.active {
+.controls[state="active"] {
   transition: opacity 500ms, transform 300ms;
   transform: translateY(0%);
   opacity: .5;
@@ -361,7 +477,7 @@ body {
   background: url(../img/speaker@2x.png) center no-repeat;
   background-size: 35px !important;
 }
-.controls .control-volume.mute {
+.controls .control-volume[state="mute"] {
   background: url(../img/speaker-off@2x.png) center no-repeat;
 }
 .controls .control-play {

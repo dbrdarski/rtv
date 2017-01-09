@@ -1,135 +1,48 @@
 define([
 	'player',
+	'vue',
+	'Rx',
 	'mustache',
 	'utils',
     'jquery',
-    'jquery.vimeo'
-], function (Player, M, _, $) {
-	function getSize(domObject){
-		var $o = $(domObject);
-		return $o.width() / $o.height();
-	}
-	function range(x, min, max){
-		return Math.max(min, Math.min(x, max));
-	}
-	function swapVideoSize(video){
-		var videoRatio = getSize(video),
-			$video = $(video);
-		return function(){
-			var ratio = getSize(window) / videoRatio;
-			if ( ratio > 1 ){
-				$video.attr('scale', 'width');
-			} else if( ratio < 1 ){
-				$video.attr('scale', 'height');
-			}
- 		};
-	}
+    'jquery.vimeo',
+    './video-player'
+], function (Player, Vue, Rx, M, _, $) {
+	var resize = Rx.Observable.fromEvent(window, 'resize').map(function(x){
+		return [x];
+	}).subscribe((x)=>console.log(['Resize event!', x]));
+
 	// var player;
 	// $(document).on('youtubeAPI.loaded', function(){
 	// 	player = window.YT.API;
 	// });
 
+
+	// function getSize(domObject){
+	// 	var $o = $(domObject);
+	// 	return $o.width() / $o.height();
+	// }
+
+	// function swapVideoSize(video){
+	// 	var videoRatio = getSize(video),
+	// 		$video = $(video);
+	// 	return function(){
+	// 		var ratio = getSize(window) / videoRatio;
+	// 		if ( ratio > 1 ){
+	// 			$video.attr('scale', 'width');
+	// 		} else if( ratio < 1 ){
+	// 			$video.attr('scale', 'height');
+	// 		}
+ // 		};
+	// }
 	// $(window).on('resize.ratio', ratio).trigger('resize.ratio');
 
-	var hideControls = function function_name($controls) {
-		return function(){
-			$controls.removeClass('active');
-		};
-	};
+	// create a root instance
+	new Vue({
+	  el: '#app'
+	});	
 
-	var showControls = function function_name($controls, $timeout) {
-		var timer;
-		return function(){
-			clearTimeout(timer);
-			$controls.addClass('active');
-			timer = setTimeout(hideControls($controls), $timeout);
-		};
-	};
 
-	$('#video-overlay').on('mousemove', showControls($('.controls'), 1000));
-	$('.controls .control-volume').on('click', function(){
-		$(this).toggleClass('mute');
-		window.YT.API.getVolume() !== 0 ? window.YT.API.setVolume(0) : window.YT.API.setVolume(100);
-	});
-	
-	var $progress = $('.controls .progress-slider');
-	$progress.on('mousedown mousemove mouseup', (function(){
-		var state, originalState;
-		return function(e){
-			e.preventDefault();
-			var player = window.YT.API,
-				control = $(this),
-				width = e.pageX - control.position().left,
-				percentage = range((width - 5) / (control.width() - 7), 0, 1);
-			if(e.type !=="mousemove" || state === "active"){
-				updateProgressBar(control)(percentage);
-				player.seekTo(player.getDuration() * percentage);
-			}
-			if(e.type === "mousedown"){
-				originalState = player.getPlayerState() === 1 ? player.pauseVideo() && 'playing' : 'paused';
-				state = 'active';
-			}else if(e.type === "mouseup"){				
-				state = 'inactive';
-				originalState === 'playing' ? player.playVideo() : null;
-			}
-		};
-	})()
-	);
-	
-	function pad(size){
-		return function(num){
-	    	var s = num+"";
-	    	while (s.length < size) s = "0" + s;
-	    	return s;
-		};
-	}
-
-	function roundTime(t){
-		return Math.floor(t);
-	}
-
-	function parseTime(t){
-		var s = t%60;
-		var m = Math.floor(t/60)%60;
-		var h = Math.floor(m/60);
-		var time = [];
-		h > 1 && time.push(h);
-		time.push(m,s);
-		return time.map(pad(2)).join(":");
-	}
-
-	var updateTime = _.memo(function(x, y){
-		x !== y && $(".control-panel .time").html(parseTime(y));
-	}, null, 0);
-	
-	var updateDuration = function(duration){
-		$(".control-panel .duration").html(parseTime(roundTime(duration)));
-	}
-
-	var updateProgressBar = function(control){
-		var player = window.YT.API;
-		return function(percentage){
-			control.find(".progress").css({"width": percentage*100+'%'});
-			control.find(".slider-handle").css({"left": percentage * (control.width() - 20)});
-			updateTime = updateTime(roundTime(player.getCurrentTime()));
-		};
-	};
-	
-	
-	function bindProgressBar(player){
-		updateDuration(player.getDuration());
-		return function(){
-			var percentage = player.getCurrentTime() / player.getDuration();
-			updateProgressBar($progress)(percentage);
-		};
-	}	
-
-	var $play = $('.control-play');
-	$play.on('click', function(){		
-		var player = window.YT.API;
-		$play.attr('state') === 'paused' ? player.playVideo() : player.pauseVideo();
-	})
-	
 	require(["youtube"], function(YT){
 		YT.events({
 			onStateChange:  function(event){
@@ -164,13 +77,17 @@ define([
 		});
 		Player.inject(YT, 'youtube');		
 	});
-	function YTV(id){
+	
+	function YTV(id, title){
 		return {
 			videoId: id,
 			iframeId: 'YT'+id,
-			vendor: 'youtube'
+			vendor: 'youtube',
+			title: title,
+			category : 'Music'
 		}
 	}
+	
 	var playlist = {
 		'videos':[
 		// {
@@ -194,23 +111,29 @@ define([
 		]
 	};
 
-	var a = Array.prototype.push.bind(playlist.videos);	
-	a(YTV('ia9PLzX1RUM'));
-	// a(YTV('LhP_PKpSONQ'));
-	// a(YTV('IVZHNPyMhMo'));
-	// a(YTV('0_e4YX73Ww4'));
-	// a(YTV('4AMV6SLT9KI'));
+	var addToPlaylist = Array.prototype.push.bind(playlist.videos);	
+	addToPlaylist(YTV('ia9PLzX1RUM', 'Bill Lawrence - Ready Wednesday (Flint)'));
+	addToPlaylist(YTV('LhP_PKpSONQ', 'Andy Emler / Claude Tchamitchian / Eric Echampard / Marc Ducret - Running Backwards'));
+	addToPlaylist(YTV('IVZHNPyMhMo', 'HAKEN - The Endless Knot (Lyric Video)'));
+	addToPlaylist(YTV('0_e4YX73Ww4', 'HAKEN - The Cockroach King Official Video'));
+	// addToPlaylist(YTV('4AMV6SLT9KI'));
 
 	require(['stache!../../templates/video'], function(template){
 		var html = template(playlist);
-		$("#video-overlay").html(html);
-		var $videos = $('.video-wrapper');
-		$videos.each(function(){
-			$(window).on('resize.videos', swapVideoSize(this)).trigger('resize.videos');
-		});
+		$("#video-overlay > .video-wrapper").html(html);
+		// var $videos = $('.video-wrapper');
+		// $videos.each(function(){
+		// 	$(window).on('resize.videos', swapVideoSize(this)).trigger('resize.videos');
+		// });
 
 		Player.load(playlist.videos[0]);
+	
+	});
 
+	require(['stache!../../templates/sidebar-articles'], function(template){
+		var html = template(playlist);
+		$("#sidebar").html(html);
+		Player.load(playlist.videos[0]);
 	});
 
 	require(['stache!../../templates/quality-control'], function(template){
@@ -232,33 +155,16 @@ define([
 
 	});
 
-	var interval;
-	Player.on('play', function(){
-		interval = setInterval(bindProgressBar(YT.API), 200);
-		$play.attr('state', 'playing');
-		$('#video-overlay').css({'filter':'none'});
-		$(YT.API.getIframe()).parent().addClass('playing');		
-	}).on('pause', function(){
-		$play.attr('state', 'paused');
-		$('#video-overlay').css({'filter':'grayscale() contrast(1.1) brightness(.65)'});
-	}).on('end', function(){
-		$(YT.API.getIframe()).parent().removeClass('playing');
-	}).on('statechange', function(){
-		updateTime(roundTime(window.YT.API.getCurrentTime()));
-		clearInterval(interval);
-	}).on('qualitychange', function(){
-			$('.control-quality .level[name="'+YT.API.getPlaybackQuality()+'"]').addClass('active').siblings().removeClass('active');		
-	})
 });
 
 function setQuality(player, q){
-    var curSeek = player.getCurrentTime(); // current video time
+    var currentTime = player.getCurrentTime(); // current video time
     var status = player.getPlayerState(); // video status
     if(status!=-1 && status!=5){ // if not started, does not to be stoped
         player.stopVideo();
     }
     player.setPlaybackQuality(q);
-    player.seekTo(curSeek);
+    player.seekTo(currentTime);
     if(status!=1){
         player.pauseVideo(); // if was paused   
     }else{
