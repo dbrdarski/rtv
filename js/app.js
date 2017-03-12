@@ -38,8 +38,17 @@ define([
 	// $(window).on('resize.ratio', ratio).trigger('resize.ratio');
 
 	// create a root instance
+
 	new Vue({
-	  el: '#app'
+	  	el: '#app',
+	  	data : {
+			playlistActive : false	  	
+	  	},
+	  	methods : {
+			togglePlaylist : function(){
+				this.playlistActive = !this.playlistActive;
+			}	  		
+	  	}
 	});	
 
 
@@ -113,13 +122,13 @@ define([
 
 	var addToPlaylist = Array.prototype.push.bind(playlist.videos);
 	
-	addToPlaylist(YTV('ZrU_tt4R3xY', 'South Park - Stick Of Truth (Full Movie)'));
+	addToPlaylist(YTV('4AMV6SLT9KI'));
 	addToPlaylist(YTV('0KSOMA3QBU0', 'Katy Perry - Dark Horse (Official) ft. Juicy J'));
 	addToPlaylist(YTV('IVZHNPyMhMo', 'HAKEN - The Endless Knot (Lyric Video)'));
 	addToPlaylist(YTV('0_e4YX73Ww4', 'HAKEN - The Cockroach King Official Video'));
 	addToPlaylist(YTV('LhP_PKpSONQ', 'Andy Emler / Claude Tchamitchian / Eric Echampard / Marc Ducret - Running Backwards'));
 	addToPlaylist(YTV('ia9PLzX1RUM', 'Bill Lawrence - Ready Wednesday (Flint)'));
-	// addToPlaylist(YTV('4AMV6SLT9KI'));
+	// addToPlaylist(YTV('ZrU_tt4R3xY', 'South Park - Stick Of Truth (Full Movie)'));
 
 	require(['stache!../../templates/video'], function(template){
 		var html = template({videos:[playlist.videos[0]]});

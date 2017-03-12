@@ -290,7 +290,11 @@ body {
   color: white;
   background: rgba(0, 0, 0, 0.6);
   box-shadow: 1px 0 rgba(255, 255, 255, 0.05) inset;
+  transform: translateX(100%);
   transition: 0.25s 0.1s ease-out;
+}
+#sidebar.active {
+  transform: none;
 }
 .article.video {
   position: relative;
@@ -562,4 +566,71 @@ body {
   border-radius: 20px;
   background: white;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+.nav-switcher {
+  cursor: pointer;
+  position: fixed;
+  display: block;
+  right: 0;
+  top: 0;
+  height: 2.1em;
+  width: 2.1em;
+  font-size: 1.6em;
+  z-index: 10;
+}
+.nav-switcher:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+.nav-switcher:active {
+  background: rgba(0, 0, 0, 0.03);
+  -moz-box-shadow: 0 0 52px rgba(0, 0, 0, 0.03) inset;
+  -webkit-box-shadow: 0 0 52px rgba(0, 0, 0, 0.03) inset;
+  -ms-box-shadow: 0 0 52px rgba(0, 0, 0, 0.03) inset;
+  -o-box-shadow: 0 0 52px rgba(0, 0, 0, 0.03) inset;
+  box-shadow: 0 0 52px rgba(0, 0, 0, 0.03) inset;
+}
+.nav-switcher:before,
+.nav-switcher:after {
+  content: "";
+  position: absolute;
+  top: 1em;
+  left: 0;
+  right: 0;
+  width: auto;
+  height: 0.13em;
+  margin: 0 .65em;
+  padding: 0 .36em;
+  -moz-transition: all 0.222s;
+  -webkit-transition: all 0.222s;
+  -ms-transition: all 0.222s;
+  -o-transition: all 0.222s;
+  transition: all 0.222s;
+}
+.nav-switcher:before {
+  background: white;
+  -moz-box-shadow: 0 0.3125em 0 0 #ffffff, 0 -0.3125em 0 0 #ffffff;
+  -webkit-box-shadow: 0 0.3125em 0 0 #ffffff, 0 -0.3125em 0 0 #ffffff;
+  -ms-box-shadow: 0 0.3125em 0 0 #ffffff, 0 -0.3125em 0 0 #ffffff;
+  -o-box-shadow: 0 0.3125em 0 0 #ffffff, 0 -0.3125em 0 0 #ffffff;
+  box-shadow: 0 0.3125em 0 0 #ffffff, 0 -0.3125em 0 0 #ffffff;
+}
+.nav-switcher.active:before {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  -ms-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.nav-switcher.active:after {
+  -moz-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  background: white;
 }

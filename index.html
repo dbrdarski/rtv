@@ -27,8 +27,9 @@
     </header>
     <div id="app">
       <video-player></video-player>     
+      <div id="playlist-icon" class="nav-switcher" v-bind:class="{ active : playlistActive }" v-on:click="togglePlaylist"></div>
+      <div id="sidebar" v-bind:class="{ active : playlistActive }" >
     </div>
-    <div id="sidebar">
       
     </div>
   </body>

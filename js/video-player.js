@@ -204,8 +204,7 @@ define(['vue','Rx', 'text!../../templates/video-player.html', 'utils', 'jquery']
 					self.updatePercentage(percentage);
 					self.updateTime(player.getCurrentTime());
 				};
-			}	
-
+			}
 		}
 	});
 });

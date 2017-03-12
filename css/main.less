@@ -6,6 +6,15 @@
 	}
 }
 
+.v(@p, @v){
+	-moz-@{p}: @v;
+	-webkit-@{p}: @v;
+	-ms-@{p}: @v;
+	-o-@{p}: @v;
+	@{p}: @v;
+
+}
+
 .gradient(@f, @b){
 	background: @f; /* For browsers that do not support gradients */
     background: -webkit-linear-gradient(@f, @b); /* For Safari 5.1 to 6.0 */
@@ -136,8 +145,11 @@ body{
 	color: white;
 	background: fade(black, 60);	
 	box-shadow: 1px 0 fade(white, 5) inset;
-	// transform: translateX(100%);
+	transform: translateX(100%);
     transition: .25s .1s ease-out;	
+	&.active{
+		transform: none;
+	}
 }
 
 .article.video{
@@ -241,3 +253,53 @@ body{
 	font-size: 24px;
 }
 @import "components/controls";
+
+.nav-switcher{
+	cursor: pointer;
+	position: fixed;
+    display: block;
+    right: 0; top: 0;
+    height: 2.1em;
+    width: 2.1em;
+    font-size: 1.6em;
+    // background: fade(white, 12);
+    z-index: 10;
+    &:hover{
+	    background: fade(white, 4);    	
+    }
+    &:active{
+	    background: fade(black, 3);    	
+	    .v(box-shadow, 0 0 52px fade(black, 3) inset);
+    }
+
+	&:before, &:after {
+	  	content: "";
+	  	position: absolute;
+	    // top: .65em;
+    	top: 1em;
+	    left: 0; right: 0;
+	    width: auto; height: 0.13em;
+	    margin: 0 .65em; padding: 0 .36em;
+	    .v(transition, all .222s);
+	}
+	&:before {
+    	background: white;
+	  	// b/ox-shadow: 
+	   //     0 0.3125em 0 0 white,
+	   //     0 0.625em 0 0 white;
+		@shadow: 
+		   0 0.3125em 0 0 white, 
+		   0 -0.3125em 0 0 white;    
+		.v(box-shadow, @shadow);
+	}
+	&.active{
+		&:before{
+			.v(box-shadow, none);
+			.v(transform, rotate(45deg));
+		}
+		&:after{
+			.v(transform, rotate(-45deg));
+			background: white;
+		}
+	}
+}
